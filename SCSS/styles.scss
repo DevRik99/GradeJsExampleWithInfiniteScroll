@@ -8,5 +8,114 @@ body {
     padding: 0;
     min-height: 100vh;
     max-width: 100vw;
-    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.viewer {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    img {
+        max-width: 56.25vw;
+        max-height: 80vh;
+        object-fit: cover;
+        object-position: center;
+        background-image: url("./../assets/img/loading.gif") 80% no-repeat;
+        box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+        @media (max-width: 720px) {
+            max-width: 80%;
+        }
+    }
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
+.fade-out {
+    animation: fadeOut 1.5s;
+}
+.fade-in {
+    animation: fadeIn 1.5s;
+}
+.loader {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // display: none;
+}
+svg.tea {
+    --secondary: #33406f;
+    #teabag {
+        transform-origin: top center;
+        transform: rotate(3deg);
+        animation: swing 2s infinite;
+    }
+    #steamL {
+        stroke-dasharray: 13;
+        stroke-dashoffset: 13;
+        animation: steamLarge 2s infinite;
+    }
+    #steamR {
+        stroke-dasharray: 9;
+        stroke-dashoffset: 9;
+        animation: steamSmall 2s infinite;
+    }
+}
+
+@keyframes swing {
+    50% {
+        transform: rotate(-3deg);
+    }
+}
+@keyframes steamLarge {
+    0% {
+        stroke-dashoffset: 13;
+        opacity: 0.6;
+    }
+    100% {
+        stroke-dashoffset: 39;
+        opacity: 0;
+    }
+}
+@keyframes steamSmall {
+    10% {
+        stroke-dashoffset: 9;
+        opacity: 0.6;
+    }
+    80% {
+        stroke-dashoffset: 27;
+        opacity: 0;
+    }
+    100% {
+        stroke-dashoffset: 27;
+        opacity: 0;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        position: relative;
+        // display: block;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
