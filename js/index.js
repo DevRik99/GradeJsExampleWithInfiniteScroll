@@ -26,13 +26,11 @@ const createImg = ({ url, author }) => {
   div.classList.add(["container"]);
   const img = document.createElement("img");
   img.setAttribute("src", url);
-  img.setAttribute("loading", "loading");
   img.setAttribute("crossorigin", "");
   img.setAttribute("alt", author);
   div.appendChild(img);
   img.addEventListener("load", (data) => {
     const images = document.querySelectorAll("img").length + 1;
-    loader.classList.add("fade-out");
     app.appendChild(div);
     Grade(data["path"]["1"]);
   });
